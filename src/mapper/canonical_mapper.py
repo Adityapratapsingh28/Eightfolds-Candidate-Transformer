@@ -53,15 +53,15 @@ class CanonicalMapper:
         elif isinstance(raw_content, dict):
             record = raw_content
 
-        full_name = record.get("name")
-        emails = [record.get("email")] if record.get("email") else []
-        phones = [record.get("phone")] if record.get("phone") else []
+        full_name = str(record.get("name")) if record.get("name") is not None else None
+        emails = [str(record.get("email"))] if record.get("email") is not None else []
+        phones = [str(record.get("phone"))] if record.get("phone") is not None else []
 
         experience = []
-        if record.get("current_company") or record.get("title"):
+        if record.get("current_company") is not None or record.get("title") is not None:
             experience.append(Experience(
-                company=record.get("current_company") or "Unknown",
-                title=record.get("title") or "Unknown",
+                company=str(record.get("current_company")) if record.get("current_company") is not None else "Unknown",
+                title=str(record.get("title")) if record.get("title") is not None else "Unknown",
                 summary="Current position (CSV)"
             ))
 
