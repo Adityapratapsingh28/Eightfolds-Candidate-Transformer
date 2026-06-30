@@ -79,6 +79,12 @@ python -m src.cli.main \
 
 ## Demo & Verification
 
+
+
+https://github.com/user-attachments/assets/79c5aa35-2b3e-4faf-96e9-3d2b5c35cda9
+
+
+
 We have preloaded the project with a sample candidate dataset for testing:
 * CSV: `sample_inputs/recruiter.csv`
 * ATS JSON: `sample_inputs/ats.json`
