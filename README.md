@@ -4,13 +4,17 @@ A high-performance, strictly deterministic Python engine designed to ingest hete
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The engine follows a modular, pipe-and-filter data-flow architecture where each stage has a single, isolated responsibility:
 
 ```
 [Ingestion] -> [Parsing] -> [Canonical Mapping] -> [Normalization] -> [Merging] -> [Projection] -> [Validation] -> [JSON Output]
 ```
+
+
+<img width="1048" height="1614" alt="image" src="https://github.com/user-attachments/assets/13cda5e9-def7-451b-8965-410453cbcd9b" />
+
 
 1. **Ingestion & Specific Parsing** (`src/parsers/`):
    Detects the source data type (CSV, JSON, PDF, TXT) and parses it into a raw structured format using dedicated tools (e.g. `pandas` for CSV, `PyMuPDF` for PDF).
@@ -27,7 +31,7 @@ The engine follows a modular, pipe-and-filter data-flow architecture where each 
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 1. **Activate the Conda Environment**:
    ```bash
@@ -47,7 +51,7 @@ The engine follows a modular, pipe-and-filter data-flow architecture where each 
 
 ---
 
-## 🚀 CLI Usage
+## CLI Usage
 
 The production command-line interface handles individual input flags for various source formats, a configuration selector, and an optional output file path.
 
@@ -73,14 +77,14 @@ python -m src.cli.main \
 
 ---
 
-## ⚡ Demo & Verification
+## Demo & Verification
 
 We have preloaded the project with a sample candidate dataset for testing:
 * CSV: `sample_inputs/recruiter.csv`
 * ATS JSON: `sample_inputs/ats.json`
 * Resume PDF: `sample_inputs/resume.pdf`
 * Notes text: `sample_inputs/notes.txt`
-
+  
 To run the pipeline on this dataset and output the transformed canonical profile:
 ```bash
 python -m src.cli.main \
@@ -91,9 +95,17 @@ python -m src.cli.main \
   --config config/default.json
 ```
 
+### Input
+<img width="813" height="95" alt="image" src="https://github.com/user-attachments/assets/7b8d687d-c81e-4839-a726-8daf02ce308c" />
+
+### Output
+<img width="851" height="617" alt="image" src="https://github.com/user-attachments/assets/2681e775-352a-40bb-96a3-be2819e0f205" />
+<img width="889" height="629" alt="image" src="https://github.com/user-attachments/assets/a03d7d1a-569e-4cf2-897d-ca53830c753f" />
+
+
 ---
 
-## 💡 System Assumptions & Rules
+## System Assumptions & Rules
 
 ### 1. Source Authority Priorities
 When merging single-value fields (e.g. `full_name`, `headline`, `years_experience`), conflicts are resolved using a hierarchy of trust weights:
@@ -121,7 +133,7 @@ Profiles are matched as the same candidate if they satisfy any of the following:
 
 ---
 
-## 🛠️ Design Decisions
+## Design Decisions
 
 1. **Zero LLM Dependencies**:
    Built strictly with deterministic algorithms, regex matching, dictionary vocabularies, and standards-compliant parsers to ensure reproducible results, zero latency penalties, and no cost overhead.
