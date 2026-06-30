@@ -43,7 +43,7 @@ class CandidateTransformationPipeline:
         raw_payloads = []
         parsing_errors = []
 
-        # Step 1: Ingest & Parse (SRP - BaseParser derivatives)
+        # Parse all provided input sources
         for source_type, path in sources_to_parse:
             if not path:
                 continue
@@ -57,13 +57,13 @@ class CandidateTransformationPipeline:
                 logger.warning(f"Failed to parse source {source_type} ({path}) - degrading gracefully: {e}")
                 parsing_errors.append((source_type, path, e))
 
-        # Check if all sources failed
+        # Ensure at least one source succeeded
         if not raw_payloads:
             raise ParserError(
                 f"All provided input sources failed to parse. Errors: {parsing_errors}"
             )
 
-        # Step 2: Canonical Mapping Layer (SRP - CanonicalMapper)
+        # Map raw source payloads to the canonical schema
         mapped_profiles = []
         for raw_data, source_type in raw_payloads:
             try:
@@ -75,21 +75,21 @@ class CandidateTransformationPipeline:
         if not mapped_profiles:
             raise ParserError("No profiles were successfully mapped to the canonical schema.")
 
-        # Step 3 & 4: Merge Engine & Normalizations (SRP - ConflictResolver / normalizers)
+        # Merge and resolve candidate details
         try:
             logger.info(f"Merging {len(mapped_profiles)} candidate profiles...")
             merged_candidate = self.resolver.merge(mapped_profiles)
         except Exception as e:
             raise ParserError(f"Merge engine failed: {e}") from e
 
-        # Step 5: Projection Engine (SRP - ProjectionEngine)
+        # Shape output based on custom configuration
         try:
             logger.info("Projecting candidate output according to custom configuration...")
             projected_output = self.projector.project(merged_candidate, config)
         except Exception as e:
             raise ParserError(f"Projection engine failed: {e}") from e
 
-        # Step 6: Schema Validator (SRP - SchemaValidator)
+        # Validate projected format compliance
         try:
             logger.info("Validating projected output schema...")
             self.validator.validate_projected_output(projected_output, config)

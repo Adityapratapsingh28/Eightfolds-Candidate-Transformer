@@ -1,0 +1,27 @@
+{
+  "candidate": {
+    "first_name": "Aditya Pratap",
+    "last_name": "Singh",
+    "contact": {
+      "email_address": "adityapratapsingh2803@gmail.com",
+      "phone_number": "+91 9140804752"
+    },
+    "positions": [
+      {
+        "company_name": "Intel Corporation",
+        "job_title": "Industrial Trainee (Software Development & Machine Learning)",
+        "start_date": "2024-05-01",
+        "end_date": "2024-07-01",
+        "description": "Worked with senior engineers to develop a machine learning-based predictive collision-avoidance system."
+      }
+    ],
+    "education_records": [
+      {
+        "school": "SRM Institute of Science and Technology",
+        "degree_name": "Bachelor of Technology",
+        "major": "Computer Science Engineering with specialisation in (AI & ML)",
+        "graduation_year": 2027
+      }
+    ]
+  }
+}

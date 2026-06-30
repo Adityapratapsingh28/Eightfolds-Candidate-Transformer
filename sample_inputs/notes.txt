@@ -1,0 +1,4 @@
+Candidate: Aditya Pratap Singh
+Email: adityapratapsingh2803@gmail.com
+Phone: +91 9140804752
+Notes: Strong engineering candidate from SRM. Experienced in AI and ML workflows, FastAPI, Flask, AWS, Docker, PyTest, and PostgreSQL. Interacted with him regarding Multi-Agent Systems.

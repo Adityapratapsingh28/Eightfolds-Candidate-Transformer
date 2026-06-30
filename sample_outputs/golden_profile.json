@@ -1,0 +1,110 @@
+{
+  "candidate_id": "merged_aditya_pratap_singh",
+  "full_name": "Aditya Pratap Singh",
+  "emails": [
+    "adityapratapsingh2803@gmail.com"
+  ],
+  "phones": [
+    "+919140804752"
+  ],
+  "location": null,
+  "links": null,
+  "headline": null,
+  "years_experience": null,
+  "skills": [
+    {
+      "name": "AWS",
+      "confidence": 0.8,
+      "sources": [
+        "notes",
+        "resume"
+      ]
+    },
+    {
+      "name": "Docker",
+      "confidence": 0.8,
+      "sources": [
+        "notes",
+        "resume"
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "confidence": 0.7,
+      "sources": [
+        "resume"
+      ]
+    },
+    {
+      "name": "Python",
+      "confidence": 0.7,
+      "sources": [
+        "resume"
+      ]
+    },
+    {
+      "name": "SQL",
+      "confidence": 0.7,
+      "sources": [
+        "resume"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Intel Corporation",
+      "title": "Industrial Trainee (Software Development & Machine Learning)",
+      "start": "2024-05",
+      "end": "2024-07",
+      "summary": "Worked with senior engineers to develop a machine learning-based predictive collision-avoidance system."
+    },
+    {
+      "company": "SRM Technologies",
+      "title": "Full Stack Software Engineer Intern",
+      "start": null,
+      "end": null,
+      "summary": "Current position (CSV)"
+    }
+  ],
+  "education": [
+    {
+      "institution": "SRM Institute of Science and Technology",
+      "degree": "Bachelor of Technology",
+      "field": "Computer Science Engineering with specialisation in (AI & ML)",
+      "end_year": 2027
+    }
+  ],
+  "overall_confidence": 1.0,
+  "provenance": [
+    {
+      "field": "full_name",
+      "source": "ats",
+      "method": "json_path_mapping"
+    },
+    {
+      "field": "emails",
+      "source": "multiple",
+      "method": "deduplication"
+    },
+    {
+      "field": "phones",
+      "source": "multiple",
+      "method": "deduplication"
+    },
+    {
+      "field": "skills",
+      "source": "multiple",
+      "method": "skills_merging"
+    },
+    {
+      "field": "experience",
+      "source": "multiple",
+      "method": "experience_merging"
+    },
+    {
+      "field": "education",
+      "source": "multiple",
+      "method": "education_merging"
+    }
+  ]
+}
